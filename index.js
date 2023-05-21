@@ -47,8 +47,7 @@ client.on('ready', () => {
    client.application.commands.create({
     name: 'queue',
     description: 'Shows the queue',
-  });
-  
+  }); 
 });
 // Track if a song is currently being played
 
@@ -99,7 +98,16 @@ client.on('interactionCreate', async (interaction) => {
         const videoUrl = results[0].link;
         const videoTitle = results[0].title;
 
-        const stream = ytdl(videoUrl, { filter: 'audioonly' });
+        const stream = ytdl(videoUrl, {
+            filter: 'audioonly',
+            fmt: 'mp3',
+            highWaterMark: 1 << 62,
+            liveBuffer: 1 << 62,
+            dlChunkSize: 0,
+            bitrate: 128,
+            quality: 'lowestaudio'
+          });
+          
         const audioResource = createAudioResource(stream);
         queue.push({ resource: audioResource, title: videoTitle });
 
@@ -191,7 +199,16 @@ client.on('messageCreate', async (message) => {
         const videoTitle = results[0].title;
 
         // Fetch the audio stream from YouTube
-        const stream = ytdl(videoUrl, { filter: 'audioonly' });
+        const stream = ytdl(videoUrl, {
+            filter: 'audioonly',
+            fmt: 'mp3',
+            highWaterMark: 1 << 62,
+            liveBuffer: 1 << 62,
+            dlChunkSize: 0,
+            bitrate: 128,
+            quality: 'lowestaudio'
+          });
+          
 
         // Create an audio resource from the stream
         const audioResource = createAudioResource(stream);
@@ -240,7 +257,7 @@ client.on('messageCreate', async (message) => {
     } else {
       message.reply('There is no paused song to resume.');
     }
-  }
+  } 
 });
 
 function playNextInQueue(connection, message) {
@@ -255,7 +272,7 @@ function playNextInQueue(connection, message) {
     audioPlayer.on(AudioPlayerStatus.Idle, () => {
       // Remove the completed song from the queue
       queue.shift();
-
+      
       // Play the next song in the queue
       if (queue.length > 0) {
         const { resource, title } = queue[0];
