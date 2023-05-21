@@ -103,7 +103,7 @@ client.on('interactionCreate', async (interaction) => {
         const audioResource = createAudioResource(stream);
         queue.push({ resource: audioResource, title: videoTitle });
 
-        interaction.reply(`Added to queue: ${videoTitle}`);
+        await interaction.reply(`Added to queue: ${videoTitle}`);
 
         if (!isPlaying) {
           playNextInQueue(connection, interaction);
