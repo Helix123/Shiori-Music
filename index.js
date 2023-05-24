@@ -129,7 +129,7 @@ client.on('interactionCreate', async (interaction) => {
 
       const searchOptions = {
         maxResults: 1,
-        key: process.env.API_KEY, // Replace with your YouTube API key
+        key: process.env.API_KEY, 
         type: 'video'
       };
 
@@ -193,7 +193,7 @@ client.on('interactionCreate', async (interaction) => {
 
       const searchOptions = {
         maxResults: 10, // Fetch 10 results
-        key: process.env.API_KEY, // Replace with your YouTube API key
+        key: process.env.API_KEY, 
         type: 'video'
       };
 
@@ -371,7 +371,7 @@ client.on('messageCreate', async (message) => {
       // Search for videos on YouTube based on the search query
       const searchOptions = {
         maxResults: 1,
-        key: process.env.API_KEY, // Replace with your YouTube API key
+        key: process.env.API_KEY, 
         type: 'video'
       };
 
@@ -442,7 +442,7 @@ client.on('messageCreate', async (message) => {
 
       const searchOptions = {
         maxResults: 10, // Fetch 10 results
-        key: process.env.API_KEY, // Replace with your YouTube API key
+        key: process.env.API_KEY, 
         type: 'video'
       };
 
