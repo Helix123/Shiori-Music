@@ -629,4 +629,4 @@ function playNextInQueue(connection, message) {
   }
 }
 
-client.login(process.env.Token); // Replace with your bot token
+client.login(process.env.Token); 
